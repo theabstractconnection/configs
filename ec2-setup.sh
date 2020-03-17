@@ -54,6 +54,8 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/the
 # ADD MISSING PLUGINS
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
+# CLONE CONFIGS
+git clone git@github.com:theabstractconnection/configs.git
 
 # INSTALL AMAZON-LINUX-EXTRA PACKAGES
 which amazon-linux-extras
@@ -76,6 +78,7 @@ sudo yum clean metadata && sudo yum install nginx -y
 sudo mkdir /etc/nginx/certs
 sudo scp -P1234 seed@localhost:.keys/ssl/theabstractconnection_cloudflare.key /etc/nginx/certs/theabstractconnection_cloudflare.key
 sudo scp -P1234 seed@localhost:.keys/ssl/theabstractconnection_cloudflare.pem /etc/nginx/certs/theabstractconnection_cloudflare.pem
+sudo cp configs/the-abstract-connection_nginx_server.conf /etc/nginx/conf.d/server.conf
 sudo systemctl enable nginx
 sudo systemctl start nginx
 

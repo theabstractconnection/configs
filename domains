@@ -1,0 +1,36 @@
+{
+  "AWS_HOSTED": [
+    {
+      "name":"The Abstract Connection",
+      "instance": "",
+      "url":"https://theabstractconnection.com",
+      "subdomains": [
+        {
+          "name":"Global API",
+          "url":"https://api.theabstractconnection.com"
+        }
+      ]
+    }
+    {
+      "name":"VPN",
+      "instance": "",
+      "url":"https://vpn.theabstractconnection.com"
+    }
+  ],
+  "HEROKU_HOSTED": [
+    {
+      "name":"Cocktailicious",
+      "url":"https://cocktailicious.herokuapp.com"
+    },
+    {
+      "name":"Musées Francais"
+      "url":"https://musees-francais.herokuapp.com"
+    },
+  ]
+}
+
+
+
+
+
+

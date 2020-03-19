@@ -16,7 +16,8 @@ mkdir .keys
 mkdir .keys/ssh
 mkdir .keys/gpg
 
-scp -P1234 seed@localhost:.keys/ssh/s33d_ed25519 .keys/ssh/s33d_ed25519
+scp -P1234 seed@localhost:.keys/ssh/passwordLess_serverKey.pem .keys/ssh/passwordLess_serverKey.pem
+sed -i 's/s33d_ed25519/passwordLess_serverKey.pem/g' ~/.ssh/config
 scp -r -P1234 seed@localhost:.keys/pgp/ .keys/pgp
 scp -P1234 seed@localhost:.ssh/config .ssh/config
 
@@ -68,8 +69,10 @@ sudo systemctl enable docker
 sudo systemctl start docker # NEED TO LOGOUT
 
 # INSTALL DOCKER-COMPOSE
-sudo curl -L https://github.com/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose # GRAB LATEST RELEASE FROM HERE https://github.com/docker/compose/releases
+# GRAB LATEST RELEASE FROM HERE https://github.com/docker/compose/releases
+sudo curl -L https://github.com/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 
 sudo chmod +x /usr/local/bin/docker-compose 
+docker-compose version
 
 # NGINX
 sudo amazon-linux-extras enable nginx1 -y
@@ -82,6 +85,20 @@ sudo cp configs/the-abstract-connection_nginx_server.conf /etc/nginx/conf.d/serv
 sudo systemctl enable nginx
 sudo systemctl start nginx
 
+# INSTALL CODEDEPLOY AGENT
+# GET BUCKET_NAME AND REGION_IDENTIFIER FROM HERE
+# https://docs.aws.amazon.com/codedeploy/latest/userguide/resource-kit.html#resource-kit-bucket-names
+export BUCKET_NAME=aws-codedeploy-eu-west-3	
+export REGION_IDENTIFIER=eu-west-3
+
+sudo yum install ruby
+sudo yum install wget
+cd /home/ec2-user
+wget -O codeDeployInstall "https://${BUCKET_NAME}.s3.${REGION_IDENTIFIER}.amazonaws.com/latest/install"
+chmod +x ./codeDeployInstall
+sudo ./codeDeployInstall auto
+
+sudo service codedeploy-agent status
 
 # CREATE PROJECTS FOLDER
 mkdir projects && cd projects

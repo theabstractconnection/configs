@@ -15,6 +15,7 @@ git clone https://github.com/abstracts33d/dotfiles.git
 mkdir .keys
 mkdir .keys/ssh
 mkdir .keys/gpg
+mkdir .keys/ssl
 
 scp -P1234 seed@localhost:.keys/ssh/passwordLess_serverKey.pem .keys/ssh/passwordLess_serverKey.pem
 sed -i 's/s33d_ed25519/passwordLess_serverKey.pem/g' ~/.ssh/config
@@ -79,8 +80,10 @@ sudo amazon-linux-extras enable nginx1 -y
 sudo yum clean metadata && sudo yum install nginx -y
 
 sudo mkdir /etc/nginx/certs
-sudo scp -P1234 seed@localhost:.keys/ssl/theabstractconnection_cloudflare.key /etc/nginx/certs/theabstractconnection_cloudflare.key
-sudo scp -P1234 seed@localhost:.keys/ssl/theabstractconnection_cloudflare.pem /etc/nginx/certs/theabstractconnection_cloudflare.pem
+sudo scp -P1234 seed@localhost:.keys/ssl/theabstractconnection_cloudflare.key .keys/ssl/theabstractconnection_cloudflare.key
+sudo scp -P1234 seed@localhost:.keys/ssl/theabstractconnection_cloudflare.pem .keys/ssl/theabstractconnection_cloudflare.pem
+sudo ln -s /home/ec2-user/.keys/ssl/theabstractconnection_cloudflare.key /etc/nginx/certs/theabstractconnection_cloudflare.key
+sudo ln -s /home/ec2-user/.keys/ssl/theabstractconnection_cloudflare.pem /etc/nginx/certs/theabstractconnection_cloudflare.pem
 sudo ln -s /home/ec2-user/configs/the-abstract-connection_nginx_server.conf /etc/nginx/conf.d/server.conf
 sudo systemctl enable nginx
 sudo systemctl start nginx
@@ -95,6 +98,8 @@ node -e "console.log('Running Node.js ' + process.version)"
 npm install -g yarn
 export PATH="$(yarn global bin):$PATH"
 yarn global add pm2
+sudo mkdir /opt/pm2
+sudo ln -s /home/ec2-user/.config/yarn/global/node_modules/.bin/pm2 /opt/pm2/pm2
 
 # INSTALL CODEDEPLOY AGENT
 # GET BUCKET_NAME AND REGION_IDENTIFIER FROM HERE

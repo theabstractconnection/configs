@@ -85,6 +85,17 @@ sudo cp configs/the-abstract-connection_nginx_server.conf /etc/nginx/conf.d/serv
 sudo systemctl enable nginx
 sudo systemctl start nginx
 
+# INSTALL NVM NODE YARN PM2
+# UNSET NVM_DIR FOR INSTALL
+export NVM_DIR=""
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install node
+node -e "console.log('Running Node.js ' + process.version)"
+npm install -g yarn
+export PATH="$(yarn global bin):$PATH"
+yarn global add pm2
+
 # INSTALL CODEDEPLOY AGENT
 # GET BUCKET_NAME AND REGION_IDENTIFIER FROM HERE
 # https://docs.aws.amazon.com/codedeploy/latest/userguide/resource-kit.html#resource-kit-bucket-names

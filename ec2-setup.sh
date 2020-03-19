@@ -81,7 +81,7 @@ sudo yum clean metadata && sudo yum install nginx -y
 sudo mkdir /etc/nginx/certs
 sudo scp -P1234 seed@localhost:.keys/ssl/theabstractconnection_cloudflare.key /etc/nginx/certs/theabstractconnection_cloudflare.key
 sudo scp -P1234 seed@localhost:.keys/ssl/theabstractconnection_cloudflare.pem /etc/nginx/certs/theabstractconnection_cloudflare.pem
-sudo cp configs/the-abstract-connection_nginx_server.conf /etc/nginx/conf.d/server.conf
+sudo ln -s /home/ec2-user/configs/the-abstract-connection_nginx_server.conf /etc/nginx/conf.d/server.conf
 sudo systemctl enable nginx
 sudo systemctl start nginx
 

@@ -1,12 +1,15 @@
-#//bin/bash
+#/bin/bash
+# curl https://raw.githubusercontent.com/theabstractconnection/configs/master/ec2-setup.sh | bash
+
+set -e
+export IFS=
+
 read -p  "Enter your Localhost username : " LOCAL_USERNAME
 read -sp "Enter your Localhost password : " LOCAL_PASSWORD && echo
 read -p  "Enter your Github full name   : " GITHUB_FULL_NAME
 read -p  "Enter your Github email       : " GITHUB_EMAIL
 read -sp "Enter your Github password    : " GITHUB_PASSWORD && echo
 read -s  "Enter your Github GPG key id  : " GITHUB_GPG_KEY_ID && echo
-
-set -e
 
 # CHANGE USER PASSWORD
 # sudo passwd ec2-user

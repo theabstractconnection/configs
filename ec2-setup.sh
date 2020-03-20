@@ -1,5 +1,5 @@
 #/bin/bash
-# curl https://raw.githubusercontent.com/theabstractconnection/configs/master/ec2-setup.sh | bash
+# curl https://raw.githubusercontent.com/theabstractconnection/configs/master/ec2-setup.sh >> ec2-setup.sh && chmod +x ec2-setup.sh && ./ec2-setup.sh
 
 set -e
 export IFS=
@@ -39,7 +39,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 
 # CLONE DOTFILES
 echo "*** Cloning Dotfiles"
-git clone https://$GITHUB_USERNAME:$GITHUB_PASSWORD@https://github.com/abstracts33d/dotfiles.git 2>&1
+git clone https://github.com/abstracts33d/dotfiles.git 2>&1
 
 # INSTALLING SSHPASS
 echo "*** Installing sshpass"

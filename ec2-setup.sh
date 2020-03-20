@@ -9,7 +9,7 @@ read -sp "Enter your Localhost password : " LOCAL_PASSWORD && echo
 read -p  "Enter your Github full name   : " GITHUB_FULL_NAME
 read -p  "Enter your Github email       : " GITHUB_EMAIL
 read -sp "Enter your Github password    : " GITHUB_PASSWORD && echo
-read -s  "Enter your Github GPG key id  : " GITHUB_GPG_KEY_ID && echo
+read -p  "Enter your Github GPG key id  : " GITHUB_GPG_KEY_ID && echo
 
 # CHANGE USER PASSWORD
 # sudo passwd ec2-user
@@ -26,7 +26,7 @@ sudo yum install util-linux-user zsh git -y
 echo "*** Changing shell for $USER to zsh"
 chsh -s $(which zsh)
 echo "*** Installing oh-my-zsh"
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+echo "n\nexit\n" | sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
 # INSTALL ZSH THEME
 echo "*** Installing ZSH theme"

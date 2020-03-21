@@ -21,7 +21,7 @@ global() {
   shopt -s globstar # enable Recursive Globing
   origdir="$PWD"
   for i in **/; do
-    cd "$i" 2>&1 # redirect output if cd fails 
+    cd "$i" || true # ignore error
     echo -n "${PWD}: "
     eval "$1" # pass command inside ""
     # eval "$@" # pass script script.sh

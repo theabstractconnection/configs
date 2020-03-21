@@ -71,7 +71,7 @@ cd ~
 
 # CLONE CONFIGS
 echo "*** Cloning Config"
-git clone git@github.com:theabstractconnection/configs.git 2>&1
+echo "yes\n" | git clone git@github.com:theabstractconnection/configs.git 2>&1
 
 # INSTALL CODEDEPLOY AGENT
 # GET BUCKET_NAME AND REGION_IDENTIFIER FROM HERE
@@ -137,6 +137,7 @@ git clone https://github.com/rbenv/rbenv.git ~/.rbenv 2>&1
 export PATH="$HOME/.rbenv/bin:$PATH"
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 ~/.rbenv/bin/rbenv init || true
+eval "$(rbenv init -)"
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build 2>&1
 

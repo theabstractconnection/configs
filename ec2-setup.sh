@@ -15,7 +15,7 @@ read -p  ">>> Enter your Github GPG key id  : " GITHUB_GPG_KEY_ID && echo
 
 # REMOVE USELESS KEYS
 
-cd .keys
+cd ~/.keys
 #RECURSIVELY APPLY CMD/SCRIPT FROM CWD IN EACH SUBDIR
 global() {
   shopt -s globstar # enable Recursive Globing

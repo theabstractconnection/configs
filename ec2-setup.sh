@@ -15,7 +15,7 @@ read -p  ">>> Enter your Github GPG key id  : " GITHUB_GPG_KEY_ID && echo
 
 # REMOVE USELESS KEYS
 
-cd .keys2
+cd .keys
 #RECURSIVELY APPLY CMD/SCRIPT FROM CWD IN EACH SUBDIR
 global() {
   shopt -s globstar # enable Recursive Globing
@@ -31,6 +31,7 @@ global() {
 }
 shopt -s extglob # enable Extended Pattern Matching
 global "rm -rf !(ssh|pgp|ssl|passwordLess_serverKey.*|*.pgp|theabstractconnection_cloudflare.*)"
+cd ~
 
 # CHANGE USER PASSWORD
 echo "☠☠☠ Updating $USER password"

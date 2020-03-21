@@ -25,9 +25,9 @@ sudo yum update -y
 echo "*** Insalling util-linux-user zsh git"
 sudo yum install util-linux-user zsh git -y
 echo "*** Changing shell for $USER to zsh"
-# chsh -s $(which zsh)
+echo "$USER_PASSWORD" |  chsh -s $(which zsh)
 echo "*** Installing oh-my-zsh"
-echo "y\nexit\n" | sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+echo "n\nexit\n" | sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
 # INSTALL ZSH THEME
 echo "*** Installing ZSH theme"
@@ -77,12 +77,13 @@ git clone git@github.com:theabstractconnection/configs.git 2>&1
 # GET BUCKET_NAME AND REGION_IDENTIFIER FROM HERE
 # https://docs.aws.amazon.com/codedeploy/latest/userguide/resource-kit.html#resource-kit-bucket-names
 echo "*** Installing CODEDEPLOY agent"
+sudo yum install yum-plugin-versionlock -y 
 sudo yum install ruby wget -y # INSTALL SYSTEM RUBY
 PATH=/usr/bin:$PATH wget -O codeDeployInstall "https://aws-codedeploy-eu-west-3.s3.eu-west-3.amazonaws.com/latest/install"
 chmod +x ./codeDeployInstall
 sudo ./codeDeployInstall auto
 sudo service codedeploy-agent status
-sudo yum remove ruby -y # REMOVIE SYSTEM RUBY
+sudo yum versionlock ruby # LOCK SYSTEMRUBY TO 2.0.0 IF CODEDEPLOY NEED TO BE REINSTALLED
 
 # INSTALL AMAZON-LINUX-EXTRA PACKAGES
 # INSTALL DOCKER
@@ -142,6 +143,7 @@ git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-b
 echo "*** Installing RUBY"
 sudo yum install openssl-devel readline-devel -y
 rbenv install 2.6.5
+rbenv global 2.6.5
 echo "*** Installing BUNDLER"
 gem install bundler
 

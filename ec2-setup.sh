@@ -60,7 +60,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/p
 
 # CLONE DOTFILES
 echo "☠☠☠ Cloning Dotfiles"
-echo "yes\n" | git clone https://github.com/abstracts33d/dotfiles.git 2>&1
+git clone https://github.com/abstracts33d/dotfiles.git 2>&1
 
 
 # IMPORT GPG KEY
@@ -91,7 +91,8 @@ cd ~
 
 # CLONE CONFIGS
 echo "☠☠☠ Cloning Config"
-echo "yes\n" | git clone git@github.com:theabstractconnection/configs.git 2>&1
+ssh-keyscan -H github.com >> ~/.ssh/known_hosts 2>&1 # ADD GITHUB KEY TO KNOWN_HOSTS
+git clone git@github.com:theabstractconnection/configs.git 2>&1
 
 # INSTALL CODEDEPLOY AGENT
 # GET BUCKET_NAME AND REGION_IDENTIFIER FROM HERE
@@ -148,7 +149,7 @@ echo 'export PATH="$(yarn global bin):$PATH"' >> ~/.bashrc
 echo "☠☠☠ Installing PM2"
 yarn global add pm2
 sudo mkdir -p /opt/bin
-sudo ln -s /home/ec2-user/.config/yarn/global/node_modules/.bin/pm2 /opt/bin/pm2
+sudo ln -s $(where pm2) /opt/bin/pm2
 
 # INSTALL RBENV RUBY BUNDLER
 echo "☠☠☠ Installing RBENV"

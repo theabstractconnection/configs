@@ -94,6 +94,10 @@ echo "☠☠☠ Cloning Config"
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts 2>&1 # ADD GITHUB KEY TO KNOWN_HOSTS
 git clone git@github.com:theabstractconnection/configs.git 2>&1
 
+# CLONE CONFIGS
+echo "☠☠☠ Cloning Envs"
+git clone git@github.com:theabstractconnection/envs.git 2>&1
+
 # INSTALL CODEDEPLOY AGENT
 # GET BUCKET_NAME AND REGION_IDENTIFIER FROM HERE
 # https://docs.aws.amazon.com/codedeploy/latest/userguide/resource-kit.html#resource-kit-bucket-names

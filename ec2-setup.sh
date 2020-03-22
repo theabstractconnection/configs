@@ -170,8 +170,8 @@ echo "☠☠☠ Installing RUBY"
 sudo yum install openssl-devel readline-devel -y
 rbenv install 2.6.5
 rbenv global 2.6.5
-echo "☠☠☠ Installing BUNDLER"
-gem install bundler
+echo "☠☠☠ Installing BUNDLER & RAILS"
+gem install bundler rails
 
 echo "☠☠☠ Creating PROJECT directory"
 # CREATE PROJECTS FOLDER

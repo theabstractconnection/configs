@@ -171,7 +171,7 @@ sudo yum install openssl-devel readline-devel -y
 rbenv install 2.6.5
 rbenv global 2.6.5
 echo "☠☠☠ Installing BUNDLER & RAILS"
-gem install bundler rails
+gem install bundler rails rake
 
 echo "☠☠☠ Creating PROJECT directory"
 # CREATE PROJECTS FOLDER

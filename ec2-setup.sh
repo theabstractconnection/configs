@@ -96,7 +96,7 @@ git clone git@github.com:theabstractconnection/configs.git 2>&1
 
 # CLONE CONFIGS
 echo "☠☠☠ Cloning Envs"
-git clone git@github.com:theabstractconnection/envs.git 2>&1
+git clone git@github.com:abstracts33d/envs.git 2>&1
 
 # INSTALL CODEDEPLOY AGENT
 # GET BUCKET_NAME AND REGION_IDENTIFIER FROM HERE

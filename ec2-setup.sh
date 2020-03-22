@@ -153,7 +153,7 @@ echo 'export PATH="$(yarn global bin):$PATH"' >> ~/.bashrc
 echo "☠☠☠ Installing PM2"
 yarn global add pm2
 sudo mkdir -p /opt/bin
-sudo ln -s $(where pm2) /opt/bin/pm2
+sudo ln -s $(which pm2) /opt/bin/pm2
 
 # INSTALL RBENV RUBY BUNDLER
 echo "☠☠☠ Installing RBENV"

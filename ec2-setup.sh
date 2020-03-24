@@ -1,4 +1,4 @@
-#/bin/bash
+#!/usr/bin/env bash
 # scp -r -P1234 seed@localhost:.keys .
 # scp -P1234 seed@localhost:.ssh/config .ssh/config
 # curl -H "Cache-Control: no-cache" https://raw.githubusercontent.com/theabstractconnection/configs/master/ec2-setup.sh >> ec2-setup.sh; chmod +x ec2-setup.sh; ./ec2-setup.sh

@@ -89,14 +89,14 @@ cd ~/dotfiles
 git remote set-url origin git@github.com:abstracts33d/dotfiles.git
 cd ~
 
-# CLONE CONFIGS
-echo "☠☠☠ Cloning Config"
+# CLONE DOTENVS
+echo "☠☠☠ CloningDotenvs"
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts 2>&1 # ADD GITHUB KEY TO KNOWN_HOSTS
-git clone git@github.com:theabstractconnection/configs.git 2>&1
+git clone git@github.com:abstracts33d/dotenvs.git 2>&1
 
 # CLONE CONFIGS
-echo "☠☠☠ Cloning Envs"
-git clone git@github.com:abstracts33d/envs.git 2>&1
+echo "☠☠☠ Cloning Config"
+git clone git@github.com:theabstractconnection/configs.git 2>&1
 
 # INSTALL CODEDEPLOY AGENT
 # GET BUCKET_NAME AND REGION_IDENTIFIER FROM HERE
@@ -173,7 +173,7 @@ rbenv global 2.6.5
 echo "☠☠☠ Installing BUNDLER & RAILS"
 gem install bundler rails rake
 
-echo "☠☠☠ Creating PROJECT directory"
+echo "☠☠☠ Creating PROJECTS directory"
 # CREATE PROJECTS FOLDER
 mkdir -p projects && cd projects
 
